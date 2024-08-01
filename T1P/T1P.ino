@@ -45,15 +45,17 @@ void setup() {
 
 void loop() {
   // Print the distance to the serial monitor:
-  Serial.print("Distance: ");
-  Serial.println(getUltrasonicDistance());
+  // Serial.print("Distance: ");
+  // Serial.println(getUltrasonicDistance());
 
-  // Wait one second before continuing:
-  delay(1000);
   if (getUltrasonicDistance() < 10) {
+    Serial.println("An object less than 10cm from sensor - detected! LED on!");
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+    Serial.println("An object less than 10cm from sensor - detected! LED on!");
     delay(2500);                      // wait for a second
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
     delay(1000);                      // wait for a second
+  } else {
+    Serial.println("No objected detected - LED off");
   }
 }
